@@ -1,0 +1,3 @@
+.env
+Database/data/**
+src/Air/**

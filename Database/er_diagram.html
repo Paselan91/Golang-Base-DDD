@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/mermaid/dist/mermaid.min.css">
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true
+        });
+    </script>
+</head>
+
+<body>
+    <div class="mermaid" style="background-color: white">
+        erDiagram
+
+        users ||--o{ players: "1:n"
+        users ||--o{ contests: "1:n"
+        contests ||--|{ players: "1:n"
+        users ||--|{ favorites: "1:1"
+        users ||--|{ comments: "1:1"
+
+
+        users {
+        int id PK "ID"
+        string user_sub_id "<UK>ユーザーのID名称"
+            string email "<UK>メールアドレス"
+                dateFormat created_at "作成日時"
+                dateFormat updated_at "更新日時"
+                dateFormat deleted_at "削除日時"
+                }
+
+                contests {
+                int id PK "ID"
+                int created_user_id FK "作成したユーザーID"
+                string name "<UK>コンテスト名"
+                    string description "説明"
+                    string image_path "画像URL"
+                    dateFormat created_at "作成日時"
+                    dateFormat updated_at "更新日時"
+                    dateFormat deleted_at "削除日時"
+                    }
+
+
+
+                    players {
+                    int id PK "ID"
+                    int user_id FK "ユーザーID"
+                    int contest_id FK "コンテストID"
+                    string name "<UK>名称"
+                        string image_path "<UK>画像URL"
+                            string description "説明"
+                            int score "点数"
+                            int clicked "クリック数"
+                            dateFormat created_at "作成/更新/削除日時"
+                            dateFormat updated_at "更新日時"
+                            dateFormat deleted_at "削除日時"
+                            }
+
+                            favorites {
+                            int id PK "ID"
+                            int user_id FK "ユーザーID"
+                            int player_id FK "お気に入り対象のプレイヤーID"
+                            dateFormat created_at "作成/更新/削除日時"
+                            dateFormat updated_at "更新日時"
+                            dateFormat deleted_at "削除日時"
+                            }
+
+                            comments {
+                            int id PK "ID"
+                            int user_id FK "ユーザーID"
+                            int player_id FK "コメント対象のプレイヤーID"
+                            string content "内容"
+                            dateFormat created_at "作成/更新/削除日時"
+                            dateFormat updated_at "更新日時"
+                            dateFormat deleted_at "削除日時"
+                            }
+    </div>
+</body>
+
+</html>
