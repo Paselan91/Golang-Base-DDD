@@ -1,6 +1,6 @@
 attach-app:
-	docker-compose exec app-c bash
+	docker-compose exec myapp bash
 attach-db:
-	docker-compose exec mysql-c bash
+	docker-compose exec myapp-db bash
 fmt:
-	docker-compose exec app-c go fmt ./...
+	docker-compose exec myapp go fmt ./...

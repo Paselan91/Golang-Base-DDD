@@ -5,7 +5,7 @@ RUN apk update && apk add bash && apk add curl
 
 ENV TZ /usr/share/zoneinfo/Asia/Tokyo
 
-ENV ROOT=/go/src/my-app
+ENV ROOT=/go/src/myapp
 WORKDIR ${ROOT}
 
 COPY . .
