@@ -53,6 +53,10 @@ func Routes(e *echo.Echo) {
 		createUserController := examples.NewCreateUserController()
 		return createUserController.Execute(c)
 	})
+	e.DELETE("/test_user/:id", func(c echo.Context) error {
+		deleteUserController := examples.NewDeleteUserController()
+		return deleteUserController.Execute(c)
+	})
 
 	// Migration & Seed
 	e.GET("/api/v1/migrate", migrate)

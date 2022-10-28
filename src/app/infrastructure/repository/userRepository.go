@@ -60,3 +60,16 @@ func (ur *userRepository) Create(userEntity *entity.UserEntity) (*entity.UserEnt
 
 	return ue, nil
 }
+
+func (ur *userRepository) Delete(userId int) (bool, *errors.AppError) {
+
+	user := models.User{}
+
+	err := ur.db.Delete(&user, userId).Error
+	if err != nil {
+		err := errors.NewAppError("ユーザーの削除に失敗しました。")
+		return false, &err
+	}
+
+	return true, nil
+}
